@@ -1,2 +1,2 @@
-Basic Blog
+Basic Blog /
 PHP-MVC-Frameworks-Symfony
