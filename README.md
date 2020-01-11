@@ -1,2 +1,2 @@
-KMBlog (Basic blog) 
+Basic Blog
 PHP-MVC-Frameworks-Symfony
