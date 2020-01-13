@@ -4,6 +4,7 @@ namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Article
  *
@@ -52,6 +53,7 @@ class Article
      */
     private $authorId;
 
+
     /**
      * @var User
      *
@@ -59,6 +61,23 @@ class Article
      * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
      */
     private $author;
+
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="imageUrl", type="text")
+//     */
+//    private $imageUrl;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="viewCount", type="integer")
+     */
+    private $viewCount;
+
+
+
 
     public function __construct()
     {
@@ -70,7 +89,7 @@ class Article
      */
     public function getSummary()
     {
-        if ($this->summary===null){
+        if ($this->summary === null) {
             $this->setSummary();
         }
         return $this->summary;
@@ -206,4 +225,40 @@ class Article
 
         return $this;
     }
+
+
+
+
+//    /**
+//     * @return string
+//     */
+//    public function getImageUrl(): string
+//    {
+//        return $this->imageUrl;
+//    }
+//
+//    /**
+//     * @param string $imageUrl
+//     */
+//    public function setImageUrl(string $imageUrl)
+//    {
+//        $this->imageUrl = $imageUrl;
+//    }
+
+    /**
+     * @return int
+     */
+    public function getViewCount(): int
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * @param int $viewCount
+     */
+    public function setViewCount(int $viewCount)
+    {
+        $this->viewCount = $viewCount;
+    }
+
 }

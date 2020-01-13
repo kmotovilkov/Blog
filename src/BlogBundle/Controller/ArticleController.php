@@ -28,6 +28,8 @@ class ArticleController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $currentUser = $this->getUser();
             $article->setAuthor($currentUser);
+            $article->setViewCount(0);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
@@ -51,6 +53,12 @@ class ArticleController extends Controller
             ->getDoctrine()
             ->getRepository(Article::class)
             ->find($id);
+
+        $article->setViewCount($article->getViewCount() + 1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($article);
+        $em->flush();
+
 
         return $this->render("article/article.html.twig", ['article' => $article]);
     }
@@ -142,6 +150,7 @@ class ArticleController extends Controller
         return $this->render('article/delete.html.twig',
             ['form' => $form->createView(), 'article' => $article]);
     }
+
     /**
      * @Route("/myArticles",name="myArticles")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")

@@ -2,34 +2,35 @@
 
 {% block body %}
 
-    <div class="container body-content" >
+    <div class="container body-content">
         <div class="row">
             {% for article in articles %}
-            <table >
-                <tr>
-                <div class="col-md-6">
-                    <article>
-                        <header>
-                            <h2>{{ article.title }}</h2>
-                        </header>
+                <table>
+                    <tr>
+                        <div class="col-md-6">
+                            <article>
+                                <header>
+                                    <h2>{{ article.title }}</h2>
+                                </header>
 
-                        <p>
-                            {{ article.summary }}
-                        </p>
-
-                        <small class="author">
-                            {{ article.author.fullName }}
-                        </small>
-
-                        <footer>
-                            <div class="pull-right">
-                                <a class="btn btn-default btn-xs"
-                                   href="{{ path('article_view',{'id': article.id}) }}">Read more &raquo;</a>
-                            </div>
-                        </footer>
-                    </article>
-                </div>
-                </tr>
+                                <p>
+                                    {{ article.summary }}
+                                </p>
+                                {#                                <img src="{{ article.imageUrl }}" width="300" height="150">#}
+                                <small class="author">
+                                    {{ article.author.fullName }}
+                                </small>
+                                Views: {{ article.viewCount }}
+{#                                Likes: {{  }}#}
+                                <footer>
+                                    <div class="pull-right">
+                                        <a class="btn btn-default btn-xs"
+                                           href="{{ path('article_view',{'id': article.id}) }}">Read more &raquo;</a>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </tr>
                 </table>
             {% endfor %}
         </div>

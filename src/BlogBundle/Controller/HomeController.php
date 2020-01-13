@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
     /**
      * @Route("/", name="blog_index")
@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $articles = $this
             ->getDoctrine()
             ->getRepository(Article::class)
-            ->findAll();
+            ->findBy([], ['viewCount' => 'desc', 'dateAdded' => 'desc']);
 
         return $this->render('default/index.html.twig',
             ['articles' => $articles]);
