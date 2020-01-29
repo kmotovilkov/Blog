@@ -4,7 +4,6 @@ namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Article
  *
@@ -42,10 +41,12 @@ class Article
      * @ORM\Column(name="dateAdded", type="datetime")
      */
     private $dateAdded;
+
     /**
      * @var string
      */
     private $summary;
+
     /**
      * @var int
      *
@@ -53,59 +54,37 @@ class Article
      */
     private $authorId;
 
-
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="BlogBundle\Entity\User", inversedBy="articles")
      * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
+     *
      */
     private $author;
 
-//    /**
-//     * @var string
-//     *
-//     * @ORM\Column(name="imageUrl", type="text")
-//     */
-//    private $imageUrl;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", nullable=false)
+     */
+    private $image;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="viewCount", type="integer")
      */
     private $viewCount;
-
-
-
 
     public function __construct()
     {
         $this->dateAdded = new \DateTime('now');
     }
 
-    /**
-     * @return string
-     */
-    public function getSummary()
-    {
-        if ($this->summary === null) {
-            $this->setSummary();
-        }
-        return $this->summary;
-    }
 
     /**
-     * @param string
-     */
-    public function setSummary()
-    {
-        $this->summary = substr($this->getContent(), 0,
-                strlen($this->getContent()) / 2) . "...";
-    }
-
-    /**
-     * Get id.
+     * Get id
      *
      * @return int
      */
@@ -115,7 +94,7 @@ class Article
     }
 
     /**
-     * Set title.
+     * Set title
      *
      * @param string $title
      *
@@ -129,7 +108,7 @@ class Article
     }
 
     /**
-     * Get title.
+     * Get title
      *
      * @return string
      */
@@ -139,7 +118,7 @@ class Article
     }
 
     /**
-     * Set content.
+     * Set content
      *
      * @param string $content
      *
@@ -153,7 +132,7 @@ class Article
     }
 
     /**
-     * Get content.
+     * Get content
      *
      * @return string
      */
@@ -163,7 +142,7 @@ class Article
     }
 
     /**
-     * Set dateAdded.
+     * Set dateAdded
      *
      * @param \DateTime $dateAdded
      *
@@ -177,13 +156,31 @@ class Article
     }
 
     /**
-     * Get dateAdded.
+     * Get dateAdded
      *
      * @return \DateTime
      */
     public function getDateAdded()
     {
         return $this->dateAdded;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        if(strlen($this->content) > 50){
+            $this->setSummary();
+        }
+        return $this->summary;
+    }
+
+    public function setSummary()
+    {
+        $this->summary = substr($this->getContent(), 0,
+                strlen($this->getContent()) / 2
+            ) . "...";
     }
 
     /**
@@ -195,7 +192,7 @@ class Article
     }
 
     /**
-     * @param int $authorId
+     * @param integer $authorId
      *
      * @return Article
      */
@@ -209,56 +206,51 @@ class Article
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor()
     {
         return $this->author;
     }
 
     /**
-     *
      * @param User $author
      * @return Article
      */
     public function setAuthor(User $author = null)
     {
         $this->author = $author;
-
         return $this;
     }
 
 
-
-
-//    /**
-//     * @return string
-//     */
-//    public function getImageUrl(): string
-//    {
-//        return $this->imageUrl;
-//    }
-//
-//    /**
-//     * @param string $imageUrl
-//     */
-//    public function setImageUrl(string $imageUrl)
-//    {
-//        $this->imageUrl = $imageUrl;
-//    }
-
     /**
-     * @return int
+     * @return integer
      */
-    public function getViewCount(): int
+    public function getViewCount()
     {
         return $this->viewCount;
     }
 
     /**
-     * @param int $viewCount
+     * @param integer $viewCount
      */
-    public function setViewCount(int $viewCount)
+    public function setViewCount($viewCount)
     {
         $this->viewCount = $viewCount;
     }
 
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 }

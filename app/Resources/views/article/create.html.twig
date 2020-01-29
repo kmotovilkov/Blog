@@ -24,13 +24,13 @@
                                   name="article[content]"></textarea>
                         </div>
                     </div>
-{#                    <div class="form-group">#}
-{#                        <label class="col-sm-4 control-label" for="article_imageUrl">Image URL:</label>#}
-{#                        <div class="col-sm-4 ">#}
-{#                            <input type="text" class="form-control" id="article_imageUrl" placeholder="Image URL"#}
-{#                                   name="article[imageUrl]">#}
-{#                        </div>#}
-{#                    </div>#}
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="article_image">Image</label>
+                        <div class="col-sm-4 ">
+                            <input type="file" accept=".jpg, .png" class="form-control" id="article_image" placeholder="Image"
+                                   name="article[image]">
+                        </div>
+                    </div>
 
                     {{ form_row(form._token) }}
 
