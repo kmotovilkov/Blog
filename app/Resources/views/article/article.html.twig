@@ -13,11 +13,11 @@
                         <p>
                             {{ article.content }}
                         </p>
-{#                        <img src="{{ article.imageUrl }}" width="300" height="150">#}
+                        <img src="{{asset('uploads/images/'~article.image)  }}" width="300" height="150">
                         <small class="author">
                             {{ article.author.fullName }}
                         </small>
-
+                        <a href=""><img src="{{ asset('like.png') }}" width="30px"></a>
                         <footer>
                             <div class="pull-right">
                                 {% if app.getUser() and  app.getUser().isAdmin() %}

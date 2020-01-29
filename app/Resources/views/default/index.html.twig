@@ -16,7 +16,8 @@
                                 <p>
                                     {{ article.summary }}
                                 </p>
-{#                                <img src="{{ article.imageUrl }}" width="300" height="150">#}
+                                <a href="{{ path('article_view',{'id': article.id}) }}">
+                                    <img src="{{asset('uploads/images/'~article.image)  }}" width="300" height="150">
                                 <small class="author">
                                     {{ article.author.fullName }}
                                 </small>
