@@ -4943,7 +4943,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
     text-decoration: none;
     background-color: #ecf0f1;
-    box-shadow: 3px 3px 8px 3px #626262;
+    /*box-shadow: 3px 3px 8px 3px #6f8180;*/
 }
 
 .nav > li.disabled > a {
@@ -5299,7 +5299,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand:hover,
 .navbar-brand:focus {
     text-decoration: none;
-    box-shadow: 3px 3px 8px 3px #626262;
+    /*box-shadow: 3px 3px 8px 3px #626262;*/
 
 }
 
