@@ -2,6 +2,7 @@
 
 namespace BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -77,9 +78,16 @@ class Article
      */
     private $viewCount;
 
+    /**
+     * @var ArrayCollection|Comment[]
+     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Comment",mappedBy="article")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->dateAdded = new \DateTime('now');
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -170,7 +178,7 @@ class Article
      */
     public function getSummary()
     {
-        if(strlen($this->content) > 50){
+        if (strlen($this->content) > 50) {
             $this->setSummary();
         }
         return $this->summary;
@@ -252,5 +260,23 @@ class Article
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    /**
+     * @return ArrayCollection|Comment[]
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment $comment
+     * @return Article
+     */
+    public function addComment(Comment $comment = null)
+    {
+        $this->comments[] = $comment;
+        return $this;
     }
 }

@@ -3,6 +3,7 @@
 namespace BlogBundle\Controller;
 
 use BlogBundle\Entity\Article;
+use BlogBundle\Entity\Comment;
 use BlogBundle\Entity\User;
 use BlogBundle\Form\ArticleType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -65,11 +66,15 @@ class ArticleController extends Controller
      */
     public function viewArticle($id)
     {
-
+        /** @var Article $article */
         $article = $this
             ->getDoctrine()
             ->getRepository(Article::class)
             ->find($id);
+
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findBy(['article' => $article], ['dateAdded' => 'desc']);
 
         $article->setViewCount($article->getViewCount() + 1);
         $em = $this->getDoctrine()->getManager();
@@ -77,7 +82,8 @@ class ArticleController extends Controller
         $em->flush();
 
 
-        return $this->render("article/article.html.twig", ['article' => $article]);
+        return $this->render("article/article.html.twig",
+            ['article' => $article, 'comments' => $comments]);
     }
 
 
