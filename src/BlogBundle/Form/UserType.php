@@ -21,6 +21,7 @@ class UserType extends AbstractType
             ->add('email', TextType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'required' =>true ,
                 'first_options' => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ])

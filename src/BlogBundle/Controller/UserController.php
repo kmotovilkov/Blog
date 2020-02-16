@@ -37,6 +37,7 @@ class UserController extends Controller
                 return $this->render('user/register.html.twig');
             }
 
+
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPassword());
 

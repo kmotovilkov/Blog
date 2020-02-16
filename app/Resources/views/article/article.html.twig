@@ -17,8 +17,13 @@
                         <small class="author">
                             {{ article.author.fullName }}
                         </small>
-{#                        <a href="{{ path('article_likes', {'id': article.id}) }}"><img src="{{ asset('like.png') }}"#}
-{#                                                                                       width="30px"></a>#}
+                        {#                        <a href="{{ path('article_likes', {'id': article.id}) }}"><img src="{{ asset('like.png') }}"#}
+                        {#                                                                                       width="30px"></a>#}
+                        <button class="btn btn-success btn-sm" id="btnComment">Add</button>
+
+                        <div id="form">
+                        </div>
+
                         <footer>
                             <div class="pull-right">
                                 {% if app.getUser() and  app.getUser().isAdmin() %}
@@ -37,10 +42,31 @@
             </div>
         </div>
 
+        <script>
+
+            let form = $(`
+            <form method="post">
+                <div class="form-group">
+                    <!--<label class="col-sm-4 control-label" for="article_content">Content</label>-->
+                    <div class="col-sm-6">
+                        <textarea class="form-control" rows="6" id="article_content" name="article[content]">
+                        </textarea>
+                         <br>
+                        <input class="btn btn-success btn-sm" type="submit" value="Create" />
+                    </div>
+                </div>
+            </form>
+        `);
+
+            $('#btnComment').on('click', function (e) {
+                e.preventDefault();
+                $('#form').append(form);
+                $('#form').toggle();
+            })
+        </script>
 
 
     {% endblock %}
-
 
 
 
