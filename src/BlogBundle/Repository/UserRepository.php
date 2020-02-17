@@ -10,4 +10,5 @@ namespace BlogBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

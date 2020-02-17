@@ -11,10 +11,10 @@
 
         <script src="{{ asset('js/bootstrap.js') }}"></script>
         <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-{#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
-{#              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"#}
-{#              crossorigin="anonymous">#}
-{#        <script src="{{ asset('./js/jquery-3.3.1.min.js') }}"></script>#}
+        {#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
+        {#              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"#}
+        {#              crossorigin="anonymous">#}
+        {#        <script src="{{ asset('./js/jquery-3.3.1.min.js') }}"></script>#}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
@@ -22,19 +22,19 @@
 <body id="{% block body_id %}{% endblock %}">
 
 {% block header %}
-    <header >
+    <header>
 
 
         <div class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-<img class="img-rounded" src="{{ asset('apple-touch-icon.png') }}" width="30px"   >
+                    <img class="img-rounded" src="{{ asset('apple-touch-icon.png') }}" width="30px">
                     <a href="{{ path('blog_index') }}" class="navbar-brand">HOME</a>
-{#                    {% if app.user %}#}
-{#                        <a href="{{ path('article_create') }}" class="navbar-brand">#}
-{#                            Create Article#}
-{#                        </a>#}
-{#                    {% endif %}#}
+                    {#                    {% if app.user %}#}
+                    {#                        <a href="{{ path('article_create') }}" class="navbar-brand">#}
+                    {#                            Create Article#}
+                    {#                        </a>#}
+                    {#                    {% endif %}#}
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -43,7 +43,15 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+
+
                         {% if app.user %}
+                            {% if is_granted ('ROLE_ADMIN') %}
+
+                                <li><a href="{{path('all_users')}}">
+                                        Admin Panel
+                                    </a></li>
+                            {% endif %}
                             <li>
                                 <a href="{{ path('myArticles') }}">
                                     My Articles
@@ -65,6 +73,7 @@
                                 </a>
                             </li>
                         {% else %}
+
                             <li>
                                 <a href="{{ path('user_register') }}">
                                     REGISTER
@@ -106,8 +115,8 @@
 {% block javascripts %}
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
-{#    <script src="{{ asset('js/bootstrap.js') }}"></script>#}
-{#    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>#}
+    {#    <script src="{{ asset('js/bootstrap.js') }}"></script>#}
+    {#    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>#}
 {% endblock %}
 
 </body>

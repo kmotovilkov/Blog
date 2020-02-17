@@ -46,7 +46,8 @@ class User implements UserInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Article", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Article", mappedBy="author",
+     *     cascade={"remove"})
      *
      */
     private $articles;
@@ -62,7 +63,8 @@ class User implements UserInterface
 
     /**
      * @var ArrayCollection|Comment[]
-     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Comment", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Comment", mappedBy="author",
+     *     cascade={"remove"})
      */
     private $comments;
 
