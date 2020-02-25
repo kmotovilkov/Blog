@@ -18,6 +18,7 @@ class CommentController extends Controller
 
     /**
      * @Route("/article/{id}/comment", name="add_comment")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param Article $article
      * @return RedirectResponse

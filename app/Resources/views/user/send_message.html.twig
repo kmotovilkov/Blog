@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <form method="post">
+        About:<input type="text" name="message[about]"><br><br>
+        Content: <textarea name="message[content]" cols="30" rows="10"></textarea><br><br>
+        <input class="btn btn-success btn-sm"type="submit" value="Send"><br><br>
+    </form>
+
+{% endblock %}
+

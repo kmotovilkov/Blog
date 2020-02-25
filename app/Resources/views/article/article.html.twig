@@ -5,29 +5,26 @@
         <div class="container body-content">
             <div class="row">
                 <div class="col-md-12">
-                    <article>
-                        <header>
+                    <header>
                             <h2>{{ article.title }}</h2>
                         </header>
-
                         <p>
                             {{ article.content }}
                         </p>
-                        <img src="{{ asset('uploads/images/'~article.image) }}" width="300" height="150">
-                        <small class="author">
+                        <img src="{{ asset('uploads/images/'~article.image) }}" width="300" height="300">
+                        <h4 class="author">
                             {{ article.author.fullName }}
-                        </small>
+                        </h4><br>
                         {#                        <a href="{{ path('article_likes', {'id': article.id}) }}"><img src="{{ asset('like.png') }}"#}
                         {#                                                                                       width="30px"></a>#}
-                        <button class="btn btn-success btn-sm" id="btnComment">Add</button>
-
+                        <button class="btn btn-success btn-sm" id="btnComment">Add Comment</button>
                         <div id="form">
                         </div>
-                        <br>
+                        <br><br>
                         {% for comment in comments %}
 
                             <p>{{ comment.content }}</p>
-                            <small class="author">{{ comment.author.fullName}}</small>
+                            <a href="{{path('user_message',{'id':comment.author.id})}}"><small class="author">{{ comment.author.fullName }}</small></a>
                             <small>{{ comment.dateAdded|date("d/m/Y H:i:s", "Europe/Sofia") }}</small>
 
                             <hr>
@@ -45,7 +42,7 @@
                                 <a class="btn btn-default btn-xs" href="{{ path('blog_index') }}">back &raquo;</a>
                             </div>
                         </footer>
-                    </article>
+                        </article>
                 </div>
             </div>
         </div>
