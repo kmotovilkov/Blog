@@ -32,9 +32,9 @@ class UserController extends Controller
                 ->findOneBy(['email' => $emailForm]);
 
             if (null !== $userForm) {
-                $this->addFlash('message', "Username with email"." " .
+                $this->addFlash('info', "Username with email"." " .
                     $emailForm ." ". "already taken!");
-                return $this->render('user/register.html.twig');
+                return $this->render('user/register.html.twig',['form'=>$form->createView()]);
             }
 
 
@@ -53,6 +53,7 @@ class UserController extends Controller
             $em->flush();
 
             return $this->redirectToRoute("security_login");
+
         }
 
 

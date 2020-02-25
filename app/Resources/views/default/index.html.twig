@@ -16,12 +16,13 @@
                                 <p>
                                     {{ article.summary }}
                                 </p>
+
                                 <a href="{{ path('article_view',{'id': article.id}) }}">
-                                    <img src="{{asset('uploads/images/'~article.image)  }}" width="300" height="150">
+                                    <img src="{{asset('uploads/images/'~article.image)  }}" width="300" height="300"></a>
                                 <small class="author">
                                     {{ article.author.fullName }}
-                                </small>
-                                Views: {{ article.viewCount }}
+                                </small><br>
+                              Views: {{ article.viewCount }}
 {#                                Likes: {{  }}#}
                                 <footer>
                                     <div class="pull-right">

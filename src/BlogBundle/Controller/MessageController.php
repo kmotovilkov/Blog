@@ -14,10 +14,10 @@ class MessageController extends Controller
 {
     /**
      * @Route("/user/{id}/message", name="user_message")
-     * @Security("is_granted('IIS_AUTHENTICATED_FULLY')")
+    * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+    * @param $id
+    * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $id)
     {
@@ -35,11 +35,12 @@ class MessageController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
-            
 
+            $this->addFlash("message", "Message sent successfully!");
+            return $this->redirectToRoute("user_message", ['id' => $id]);
         }
 
 
-        return $this->render('user/send_message.html.twig');
+        return $this->render('user/send_message.html.twig',['form'=>$form->createView()]);
     }
 }

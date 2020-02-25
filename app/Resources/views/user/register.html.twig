@@ -4,8 +4,9 @@
 
 {% block main %}
 
-    {% for msg in app.session.flashBag.get('message') %}
+    {% for msg in app.session.flashBag.get('info') %}
         <div class="alert alert-danger" role="alert">
+            <a href="" class="close" data-dismiss="alert" aria-label="close">×</a>
             {{ msg }}
         </div>
 
@@ -40,7 +41,8 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_password_second">Confirm Password</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="user_password_second" placeholder="Password" name="user[password][second]" required>
+                            <input type="password" class="form-control" id="user_password_second" placeholder="Password"
+                                   name="user[password][second]" required>
                         </div>
                     </div>
 
@@ -50,7 +52,6 @@
                             <button type="submit" class="btn btn-primary">OK</button>
                         </div>
                     </div>
-
 
                 </fieldset>
             </form>
