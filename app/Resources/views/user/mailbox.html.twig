@@ -6,7 +6,7 @@
     {% for message in messages %}
 
 
-       {% if not message.reader %}aaa
+       {% if not message.reader %}
         <p><a href="{{ path('user_current_message',{'id':message.id}) }}">
                 {{ message.sender.email }}</a>
             <small>{{ message.dateAdded|date("d/m/Y H:i:s", "Europe/Sofia") }}</small>

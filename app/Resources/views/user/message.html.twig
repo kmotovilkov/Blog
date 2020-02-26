@@ -10,7 +10,10 @@
     <small>Date: {{ message.dateAdded|date("d/m/Y H:i:s", "Europe/Sofia") }}</small>
 
     <hr>
-
+    {% for msg in app.session.flashBag.get('message') %}
+        <div id="msg" class="alert alert-success" role="alert">
+            <a href="" class="close" data-dismiss="alert" aria-label="close">×</a>
+            {{ msg }}
         </div>
     {% endfor %}
 
