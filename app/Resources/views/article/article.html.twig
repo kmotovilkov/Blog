@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
     {% block main %}
-
+        {% for msg in app.session.flashBag.get('message') %}
+            <div id="msg" class="alert alert-success" role="alert">
+                <a href="" class="close" data-dismiss="alert" aria-label="close">×</a>
+                {{ msg }}
+            </div>
+        {% endfor %}
         <div class="container body-content">
             <div class="row">
                 <div class="col-md-12">
@@ -24,7 +29,7 @@
                         {% for comment in comments %}
 
                             <p>{{ comment.content }}</p>
-                            <a href="{{path('user_message',{'id':comment.author.id})}}"><small class="author">{{ comment.author.fullName }}</small></a>
+                            <a href="{{path('user_message',{'id':comment.author.id,'articleId':comment.article.id })}}"><small class="author">{{ comment.author.fullName }}</small></a>
                             <small>{{ comment.dateAdded|date("d/m/Y H:i:s", "Europe/Sofia") }}</small>
 
                             <hr>

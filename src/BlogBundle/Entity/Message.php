@@ -56,6 +56,11 @@ class Message
      */
     private $recipient;
 
+    /**
+     * @var bool
+     * @ORM\Column(name="isReaded",nullable=false,type="boolean")
+     */
+    private $isReader;
 
     public function __construct()
     {
@@ -177,6 +182,24 @@ class Message
     public function setRecipient(User $recipient)
     {
         $this->recipient = $recipient;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isReader(): bool
+    {
+        return $this->isReader;
+    }
+
+    /**
+     * @param bool $isReader
+     * @return Message
+     */
+    public function setIsReader(bool $isReader)
+    {
+        $this->isReader = $isReader;
         return $this;
     }
 

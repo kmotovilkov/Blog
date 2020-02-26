@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <a class="btn btn-default btn-xs" href="{{ path('user_profile') }}"> &laquo; back to profile</a>
+    <br><br>
+    {% for message in messages %}
+
+
+       {% if not message.reader %}aaa
+        <p><a href="{{ path('user_current_message',{'id':message.id}) }}">
+                {{ message.sender.email }}</a>
+            <small>{{ message.dateAdded|date("d/m/Y H:i:s", "Europe/Sofia") }}</small>
+
+            <small style="float: right; color: red">Unread</small></p>
+        <hr>
+        {% else %}
+            <p><a href="{{ path('user_current_message',{'id':message.id}) }}">
+                    {{ message.sender.email }}</a>
+                <small>{{ message.dateAdded|date("d/m/Y H:i:s", "Europe/Sofia") }}</small>
+                <small style="float: right; color: green">Readed</small></p>
+            <hr>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+
+

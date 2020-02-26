@@ -2,6 +2,7 @@
 
 namespace BlogBundle\Controller;
 
+use BlogBundle\Entity\Message;
 use BlogBundle\Entity\Role;
 use BlogBundle\Entity\User;
 use BlogBundle\Form\UserType;
@@ -32,9 +33,9 @@ class UserController extends Controller
                 ->findOneBy(['email' => $emailForm]);
 
             if (null !== $userForm) {
-                $this->addFlash('info', "Username with email"." " .
-                    $emailForm ." ". "already taken!");
-                return $this->render('user/register.html.twig',['form'=>$form->createView()]);
+                $this->addFlash('info', "Username with email" . " " .
+                    $emailForm . " " . "already taken!");
+                return $this->render('user/register.html.twig', ['form' => $form->createView()]);
             }
 
 
@@ -71,7 +72,16 @@ class UserController extends Controller
             ->getRepository(User::class)
             ->find($userId);
 
-        return $this->render("user/profile.html.twig", ['user' => $user]);
+
+        $unreadMessages = $this
+            ->getDoctrine()
+            ->getRepository(Message::class)
+            ->findBy(['recipient' => $user, 'isReader' => false]);
+
+        $countMsg = count($unreadMessages);
+
+        return $this->render("user/profile.html.twig",
+            ['user' => $user, 'countMsg' => $countMsg]);
 
     }
 
