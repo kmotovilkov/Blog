@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MessageController extends Controller
 {
     /**
-     * @Route("/user/{id}/message", name="user_message")
+     * @Route("/user/{id}/message/{articleId}", name="user_message")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param $articleId
@@ -42,7 +42,7 @@ class MessageController extends Controller
             $em->flush();
 
             $this->addFlash("message", "Message sent successfully!");
-            return $this->redirectToRoute("user_message", ['id' => $id]);
+            return $this->redirectToRoute("article_view", ['id' => $articleId]);
         }
 
 
