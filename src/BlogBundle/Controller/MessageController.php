@@ -22,7 +22,6 @@ class MessageController extends Controller
      */
     public function addMessageAction(Request $request,$articleId, $id)
     {
-//        $articleId =substr($_SERVER['HTTP_REFERER'], strrpos($_SERVER['HTTP_REFERER'],'/')+1);
 
         $currentUser = $this->getUser();
         $recipient = $this->getDoctrine()->getRepository(User::class)->find($id);
@@ -109,6 +108,7 @@ class MessageController extends Controller
             return $this->redirectToRoute("user_current_message", ['id' => $id]);
         }
 
-        return $this->render("user/message.html.twig", ['message' => $message, 'form' => $form->createView()]);
+        return $this->render("user/message.html.twig",
+            ['message' => $message, 'form' => $form->createView()]);
     }
 }

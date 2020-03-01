@@ -22,6 +22,14 @@ class HomeController extends Controller
             ->getRepository(Article::class)
             ->findBy([], ['viewCount' => 'desc', 'dateAdded' => 'desc']);
 
+//        $paginator = $this->get('knp_paginator');
+//
+//        $pagination = $paginator->paginate(
+//            $articles, /* query NOT result */
+//            $request->query->getInt('page', 1), /*page number*/
+//            4 /*limit per page*/
+//        );
+
         return $this->render('default/index.html.twig',
             ['articles' => $articles]);
     }
