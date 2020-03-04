@@ -24,13 +24,9 @@
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
-
 <body id="{% block body_id %}{% endblock %}">
-
 {% block header %}
     <header>
-
-
         <div class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -49,8 +45,6 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-
-
                         {% if app.user %}
                             {% if is_granted ('ROLE_ADMIN') %}
 
@@ -58,6 +52,11 @@
                                         Admin Panel
                                     </a></li>
                             {% endif %}
+                            <li>
+                                <a href="{{ path('user_mailbox') }}">
+                                    <i class="glyphicon glyphicon-envelope fa-2x"></i>
+                                    <small>(1)</small></a>
+                            </li>
                             <li>
                                 <a href="{{ path('myArticles') }}">
                                     My Articles
@@ -68,6 +67,7 @@
                                     Create Article
                                 </a>
                             </li>
+
                             <li>
                                 <a href="{{ path('user_profile') }}">
                                     My Profile
@@ -79,7 +79,6 @@
                                 </a>
                             </li>
                         {% else %}
-
                             <li>
                                 <a href="{{ path('user_register') }}">
                                     REGISTER
@@ -95,8 +94,6 @@
                 </div>
             </div>
         </div>
-
-
     </header>
 {% endblock %}
 
@@ -121,8 +118,6 @@
 {% block javascripts %}
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
-    {#    <script src="{{ asset('js/bootstrap.js') }}"></script>#}
-    {#    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>#}
 {% endblock %}
 
 </body>
