@@ -41,7 +41,6 @@ textarea {
 
 
 html {
-    font-family: 'Roboto', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
@@ -352,11 +351,11 @@ th {
     }
 }
 
-@font-face {
-    font-family: 'Roboto', sans-serif;
-    src: url('../fonts/glyphicons-halflings-regular.eot');
-    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
+/*@font-face {*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    src: url('../fonts/glyphicons-halflings-regular.eot');*/
+/*    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');*/
+/*}*/
 
 .glyphicon {
     position: relative;
